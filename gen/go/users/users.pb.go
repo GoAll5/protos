@@ -23,7 +23,7 @@ const (
 
 type CreateUserRequest struct {
 	state  protoimpl.MessageState `protogen:"open.v1"`
-	UserId int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Email  string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
 	// profile can be extended later: address
 	FirstName     string `protobuf:"bytes,3,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
@@ -62,11 +62,11 @@ func (*CreateUserRequest) Descriptor() ([]byte, []int) {
 	return file_users_users_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CreateUserRequest) GetUserId() int64 {
+func (x *CreateUserRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return ""
 }
 
 func (x *CreateUserRequest) GetEmail() string {
@@ -92,7 +92,7 @@ func (x *CreateUserRequest) GetLastName() string {
 
 type CreateUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -127,16 +127,16 @@ func (*CreateUserResponse) Descriptor() ([]byte, []int) {
 	return file_users_users_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CreateUserResponse) GetUserId() int64 {
+func (x *CreateUserResponse) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return ""
 }
 
 type GetUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -171,16 +171,16 @@ func (*GetUserRequest) Descriptor() ([]byte, []int) {
 	return file_users_users_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *GetUserRequest) GetUserId() int64 {
+func (x *GetUserRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return ""
 }
 
 type GetUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
 	FirstName     string                 `protobuf:"bytes,3,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	LastName      string                 `protobuf:"bytes,4,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"` // address, etc later
@@ -218,11 +218,11 @@ func (*GetUserResponse) Descriptor() ([]byte, []int) {
 	return file_users_users_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetUserResponse) GetUserId() int64 {
+func (x *GetUserResponse) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return ""
 }
 
 func (x *GetUserResponse) GetEmail() string {
@@ -252,17 +252,17 @@ const file_users_users_proto_rawDesc = "" +
 	"\n" +
 	"\x11users/users.proto\x12\busers.v1\"~\n" +
 	"\x11CreateUserRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x03 \x01(\tR\tfirstName\x12\x1b\n" +
 	"\tlast_name\x18\x04 \x01(\tR\blastName\"-\n" +
 	"\x12CreateUserResponse\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\")\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\")\n" +
 	"\x0eGetUserRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\"|\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\"|\n" +
 	"\x0fGetUserResponse\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x03 \x01(\tR\tfirstName\x12\x1b\n" +
@@ -270,7 +270,7 @@ const file_users_users_proto_rawDesc = "" +
 	"\fUsersService\x12G\n" +
 	"\n" +
 	"CreateUser\x12\x1b.users.v1.CreateUserRequest\x1a\x1c.users.v1.CreateUserResponse\x12>\n" +
-	"\aGetUser\x12\x18.users.v1.GetUserRequest\x1a\x19.users.v1.GetUserResponseB\x18Z\x16rinat.users.v1;usersv1b\x06proto3"
+	"\aGetUser\x12\x18.users.v1.GetUserRequest\x1a\x19.users.v1.GetUserResponseB2Z0github.com/GoAll5/protos/gen/go/users/v1;usersv1b\x06proto3"
 
 var (
 	file_users_users_proto_rawDescOnce sync.Once
