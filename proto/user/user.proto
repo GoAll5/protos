@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package users.v1;
+package user.v1;
 
-option go_package = "github.com/GoAll5/protos/gen/go/users/v1;usersv1";
+option go_package = "github.com/GoAll5/protos/gen/go/user/v1;userv1";
 
-service UsersService {
+service UserService {
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
   rpc GetUser(GetUserRequest) returns (GetUserResponse);
 }
